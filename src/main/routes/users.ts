@@ -1,8 +1,8 @@
-import { adapterFastifyController as adapt } from '@/main/adapters'
-import { makeAddAccountController, makeLoginAccountController } from '@/main/factories/controllers'
-import { type FastifyInstance } from 'fastify'
+import { adapterExpressController as adapt } from '@/main/adapters'
+import { type Router } from 'express'
+import { makeAddAccountController, makeLoginAccountController } from '../factories/controllers'
 
-export default async (app: FastifyInstance): Promise<void> => {
-  app.post('/sign-up', adapt(makeAddAccountController()))
-  app.post('/sign-in', adapt(makeLoginAccountController()))
+export default (router: Router): void => {
+  router.post('/sign-up', adapt(makeAddAccountController()))
+  router.post('/sign-in', adapt(makeLoginAccountController()))
 }

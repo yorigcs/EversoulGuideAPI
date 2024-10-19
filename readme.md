@@ -5,7 +5,7 @@
 
 The NikkeTeams project consists of a Restful API still in development for sharing teams among Nikke game players, in order to efficiently help them progress more easily. The API was built following the principles of clean architecture along with best software development practices such as TDD (Test Driven Development), SOLID, and design patterns.
 
-The chosen technologies were selected based on their efficiency and suitability for the project, including Node.js with Typescript as the main language, Fastify as the web application framework, Jest as the unit testing framework, Prisma as the ORM for accessing the Postgres database, Redis as the in-memory database for caching and performance optimization, AWS S3 as the cloud file storage service, and Docker to facilitate the deployment and scalability process of the application.
+The chosen technologies were selected based on their efficiency and suitability for the project, including Node.js with Typescript as the main language, Express.js as the web application framework, Jest as the unit testing framework, Prisma as the ORM for accessing the Postgres database, Redis as the in-memory database for caching and performance optimization, AWS S3 as the cloud file storage service, and Docker to facilitate the deployment and scalability process of the application.
 
 I developed all the code with a focus on ensuring the maintainability, scalability, and robustness of the application.
 
@@ -52,17 +52,14 @@ Don't forget to config .env and .env.test the same as the .env.example
 - [@aws-sdk/client-s3](https://www.npmjs.com/package/@aws-sdk/client-s3): AWS SDK for JavaScript S3 Client for Node.js, Browser and React Native.
 - [@prisma/client](https://www.npmjs.com/package/@prisma/client): auto-generated query builder that enables type-safe.
 - [bcrypt](https://www.npmjs.com/package/bcrypt): A library to help you hash passwords.
+- [cors](https://www.npmjs.com/package/cors): node.js package for providing a Connect/Express middleware.
 - [dotenv-cli](https://www.npmjs.com/package/dotenv-cli): manage multiple envs.
+- [express](https://www.npmjs.com/package/express): Fast, unopinionated, minimalist web framework for Node.js.
 - [module-alias](https://www.npmjs.com/package/module-alias): Create aliases of directories and register custom module paths in NodeJS.
 - [uuid](https://www.npmjs.com/package/uuid): For the creation of RFC4122 UUIDs.
+- [multer](https://www.npmjs.com/package/multer): A middleware for handling multipart/form-data.
 - [rimraf](https://www.npmjs.com/package/bcrypt): The UNIX command rm -rf for node.
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken): An implementation of JSON Web Tokens.
-- [fastify](https://www.npmjs.com/package/fastify): Faster web framework for nodejs.
-- [@fastify/cookie](https://www.npmjs.com/package/@fastify/cookie): A plugin for Fastify that adds support for reading and setting cookies.
-- [@fastify/cors](https://www.npmjs.com/package/@fastify/cors): A plugin for Fastify that enables the use of CORS.
-- [@fastify/multipart](https://www.npmjs.com/package/@fastify/multipart): Fastify plugin to parse the multipart content-type.
-- [@fastify/rate-limit](https://www.npmjs.com/package/jsonwebtoken): An implementation of JSON Web Tokens.
-
 
 
 ## Dev Dependencies
@@ -77,13 +74,16 @@ Don't forget to config .env and .env.test the same as the .env.example
 - [ts-jest](https://www.npmjs.com/package/ts-jest): A Jest transformer with source map support that lets you use Jest to test projects written in TypeScript.
 - [ts-node-dev](https://www.npmjs.com/package/ts-node-dev): Tweaked version of node-dev that uses ts-node under the hood.
 - [typescript](https://www.npmjs.com/package/typescript):  Language for application-scale JavaScript.
+- [@jest-mock/express](https://www.npmjs.com/package/@jest-mock/express): A lightweight Jest mock for unit testing Express.
 - [@types/bcrypt](https://www.npmjs.com/package/@types/bcrypt): TypeScript definitions for bcrypt.
+- [@types/cors](https://www.npmjs.com/package/@types/cors): TypeScript definitions for cors.
+- [@types/express](https://www.npmjs.com/package/@types/express): TypeScript definitions for express.
 - [@types/jest](https://www.npmjs.com/package/@types/jest): TypeScript definitions for jest.
 - [@types/supertest](https://www.npmjs.com/package/@types/supertest): TypeScript definitions for supertest.
 - [@types/uuid](https://www.npmjs.com/package/@types/uuid): TypeScript definitions for uuid.
 - [@types/module-alias](https://www.npmjs.com/package/@types/module-alias): TypeScript definitions for module-alias.
 - [@types/jsonwebtoken](https://www.npmjs.com/package/@types/jsonwebtoken): TypeScript definitions for jsonwebtoken.
-
+- [@types/multer](https://www.npmjs.com/package/@types/multer): TypeScript definitions for multer.
 
 
 ## License

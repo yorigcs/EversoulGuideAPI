@@ -1,10 +1,9 @@
+import { type Router } from 'express'
 
 import { auth } from '@/main/middlewares'
-import { adapterFastifyController as adapt, adaptFastifyMultipart as upload } from '@/main/adapters'
+import { adaptMulter as upload, adapterExpressController as adapt } from '@/main/adapters'
 import { makeAddCampaignTeamController } from '@/main/factories/controllers'
-import { type FastifyInstance } from 'fastify'
 
-export default async (app: FastifyInstance): Promise<void> => {
-  void app.register(import('@fastify/multipart'), { attachFieldsToBody: true })
-  app.post('/campaign-upload', { preHandler: [auth, upload] }, adapt(makeAddCampaignTeamController()))
+export default (router: Router): void => {
+  router.post('/campaign-upload', auth, upload, adapt(makeAddCampaignTeamController()))
 }

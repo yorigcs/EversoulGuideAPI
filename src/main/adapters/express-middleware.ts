@@ -1,9 +1,9 @@
 import { type Middleware } from '@/application/middlewares'
-import { type FastifyReply, type FastifyRequest } from 'fastify'
+import { type RequestHandler } from 'express'
 
-type Adapter = (middleware: Middleware) => (req: FastifyRequest, reply: FastifyReply) => Promise<void>
+type Adapter = (middleware: Middleware) => RequestHandler
 
-const adapterFastifyMiddleware: Adapter = middleware => async (req, reply) => {
+export const adapterExpressMiddleware: Adapter = middleware => async (req, res, next) => {
   const { cookie, ...headers } = req.headers
   let validHeaders = { ...headers }
   if (cookie !== undefined) {
@@ -19,10 +19,9 @@ const adapterFastifyMiddleware: Adapter = middleware => async (req, reply) => {
   const { data, statusCode } = await middleware.handle({ ...validHeaders })
   if (statusCode === 200) {
     const validEntries = Object.entries(data).filter(([,value]) => value)
-    req.locals = { ...req.locals, ...Object.fromEntries(validEntries) }
+    res.locals = { ...res.locals, ...Object.fromEntries(validEntries) }
+    next()
   } else {
-    await reply.code(statusCode).send({ error: data.message })
+    res.status(statusCode).json({ error: data.message })
   }
 }
-
-export { adapterFastifyMiddleware }
